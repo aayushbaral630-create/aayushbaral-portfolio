@@ -575,7 +575,8 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%) translateZ(0);
+            will-change: transform;
             width: 65%;
             aspect-ratio: 1;
             border-radius: 28px;
@@ -2343,6 +2344,221 @@
             }
             #typewriter-cursor { display: none; }
         }
+        /* ──── Built By Section ──── */
+        .builtby {
+            background-color: #FAFAF7;
+            position: relative;
+            overflow: hidden;
+            padding: 80px 0;
+        }
+
+        .builtby-bg-circle {
+            position: absolute;
+            top: 50%;
+            right: -150px;
+            transform: translateY(-50%);
+            width: 500px;
+            height: 500px;
+            border: 1px solid rgba(27, 43, 94, 0.031);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .builtby-bg-square {
+            position: absolute;
+            top: 40px;
+            left: 60px;
+            width: 60px;
+            height: 60px;
+            background: rgba(201, 168, 76, 0.063);
+            border: 1px solid rgba(201, 168, 76, 0.125);
+            border-radius: 12px;
+            transform: rotate(20deg);
+            z-index: 0;
+        }
+
+        .builtby-container {
+            position: relative;
+            z-index: 1;
+            max-width: 780px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .builtby-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--color-primary);
+            color: var(--color-accent);
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-bottom: 28px;
+        }
+
+        .builtby-headline {
+            font-family: var(--font-hero);
+            font-size: 52px;
+            font-weight: 700;
+            color: var(--color-text);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .builtby-headline em {
+            color: var(--color-accent);
+            font-style: italic;
+        }
+
+        .builtby-subtext {
+            font-family: var(--font-body);
+            font-size: 18px;
+            color: var(--color-muted);
+            line-height: 1.8;
+            max-width: 580px;
+            margin: 0 auto 40px;
+        }
+
+        .builtby-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 44px;
+        }
+
+        .builtby-pill {
+            background: white;
+            border: 1.5px solid var(--color-border);
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-text);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .builtby-pill .star {
+            font-size: 16px;
+            color: var(--color-accent);
+        }
+
+        .builtby-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 48px;
+        }
+
+        .builtby-btn {
+            padding: 16px 36px;
+            font-size: 16px;
+        }
+
+        .builtby-social-proof {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            padding-top: 32px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .builtby-avatars-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .builtby-avatars {
+            display: flex;
+        }
+
+        .builtby-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-body);
+            font-size: 11px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .builtby-avatar.avatar-1 { background: var(--color-primary); z-index: 3; }
+        .builtby-avatar.avatar-2 { background: #1f366e; margin-left: -10px; z-index: 2; color: var(--color-accent); }
+        .builtby-avatar.avatar-3 { background: #2f498c; margin-left: -10px; z-index: 1; }
+
+        .builtby-proof-text {
+            text-align: left;
+            font-size: 14px;
+            color: var(--color-muted);
+            line-height: 1.3;
+        }
+
+        .builtby-proof-text strong {
+            color: var(--color-text);
+            font-weight: 500;
+        }
+
+        .builtby-divider {
+            width: 1px;
+            height: 32px;
+            background-color: var(--color-border);
+        }
+
+        .builtby-rating-group {
+            text-align: left;
+        }
+
+        .builtby-stars {
+            color: var(--color-accent);
+            font-size: 16px;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+
+        .builtby-rating-text {
+            color: var(--color-text);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .builtby-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .builtby-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .builtby-headline { font-size: 34px; }
+            .builtby-subtext { font-size: 16px; }
+            .builtby-pill { padding: 8px 16px; font-size: 13px; }
+            .builtby-actions { flex-direction: column; width: 100%; }
+            .builtby-actions .btn { width: 100%; text-align: center; justify-content: center; }
+            .builtby-social-proof { flex-direction: column; gap: 16px; }
+            .builtby-divider { width: 40px; height: 1px; }
+            .builtby-avatars-group { flex-direction: column; gap: 8px; }
+            .builtby-proof-text { text-align: center; }
+            .builtby-rating-group { text-align: center; }
+        }
+
         /* ──── WhatsApp Bubble ──── */
         #wa-bubble-wrapper {
             position: fixed;
@@ -2353,6 +2569,8 @@
             flex-direction: column;
             align-items: flex-end;
             gap: 12px;
+            transform: translateZ(0);
+            will-change: transform;
         }
 
         #wa-btn {
@@ -2514,6 +2732,139 @@
             }
             #wa-popup { width: 270px; }
         }
+
+        /* ──── Tech Stack Marquee ──── */
+        .tech-marquee-section {
+            background-color: var(--color-primary);
+            border-top: 1px solid rgba(255, 255, 255, 0.031);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.031);
+            overflow: hidden;
+            position: relative;
+            padding: 18px 0;
+            width: 100%;
+        }
+
+        .marquee-label {
+            font-family: var(--font-body);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.145);
+            margin-bottom: 14px;
+            text-align: center;
+        }
+
+        .marquee-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .marquee-wrapper::before,
+        .marquee-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 120px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .marquee-wrapper::before {
+            left: 0;
+            background: linear-gradient(to right, var(--color-primary), transparent);
+        }
+
+        .marquee-wrapper::after {
+            right: 0;
+            background: linear-gradient(to left, var(--color-primary), transparent);
+        }
+
+        .marquee-row {
+            display: flex;
+            width: fit-content;
+            cursor: default;
+        }
+
+        .marquee-row:hover {
+            animation-play-state: paused !important;
+        }
+
+        .marquee-row-1 {
+            animation: scrollLeft 30s linear infinite;
+        }
+
+        .marquee-row-2 {
+            animation: scrollRight 30s linear infinite;
+        }
+
+        .marquee-content {
+            display: flex;
+            gap: 48px;
+            padding-right: 48px;
+        }
+
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+        }
+
+        .marquee-item-1 {
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.376);
+            letter-spacing: 0.04em;
+        }
+
+        .marquee-item-2 {
+            font-family: var(--font-body);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(201, 168, 76, 0.376);
+            font-weight: 500;
+        }
+
+        .marquee-item-2 .star {
+            color: var(--color-accent);
+            margin-right: 6px;
+        }
+
+        .marquee-divider {
+            height: 1px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.024);
+            margin: 14px 0;
+        }
+
+        @keyframes scrollLeft {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        @keyframes scrollRight {
+            from { transform: translateX(-50%); }
+            to { transform: translateX(0); }
+        }
+
+        @media (max-width: 768px) {
+            .marquee-row-2 { display: none; }
+            .marquee-divider { display: none; }
+            .marquee-label { display: none; }
+            .marquee-row-1 { animation-duration: 20s; }
+            .marquee-wrapper::before,
+            .marquee-wrapper::after {
+                width: 60px;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .marquee-row { animation-play-state: paused !important; }
+        }
     </style>
 </head>
 <body style="opacity: 0;">
@@ -2630,6 +2981,82 @@
                 </div>
                 <div class="floating-badge">● Available for Projects</div>
             </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Marquee -->
+    <section class="tech-marquee-section">
+        <div class="marquee-label">Tools & Technologies I Work With</div>
+        <div class="marquee-wrapper">
+            
+            <!-- ROW 1 -->
+            <div class="marquee-row marquee-row-1">
+                <div class="marquee-content">
+                    <div class="marquee-item marquee-item-1">⚡ Meta Ads</div>
+                    <div class="marquee-item marquee-item-1">🤖 ChatGPT & AI</div>
+                    <div class="marquee-item marquee-item-1">📊 Google Analytics</div>
+                    <div class="marquee-item marquee-item-1">🎨 Figma</div>
+                    <div class="marquee-item marquee-item-1">⚛️ React.js</div>
+                    <div class="marquee-item marquee-item-1">🟢 Node.js</div>
+                    <div class="marquee-item marquee-item-1">🐍 Python</div>
+                    <div class="marquee-item marquee-item-1">🗄️ PostgreSQL</div>
+                    <div class="marquee-item marquee-item-1">📱 Responsive Design</div>
+                    <div class="marquee-item marquee-item-1">🔄 Zapier & Make</div>
+                    <div class="marquee-item marquee-item-1">📧 EmailJS</div>
+                    <div class="marquee-item marquee-item-1">☁️ AWS & Vercel</div>
+                </div>
+                <!-- Duplicate for seamless scroll -->
+                <div class="marquee-content">
+                    <div class="marquee-item marquee-item-1">⚡ Meta Ads</div>
+                    <div class="marquee-item marquee-item-1">🤖 ChatGPT & AI</div>
+                    <div class="marquee-item marquee-item-1">📊 Google Analytics</div>
+                    <div class="marquee-item marquee-item-1">🎨 Figma</div>
+                    <div class="marquee-item marquee-item-1">⚛️ React.js</div>
+                    <div class="marquee-item marquee-item-1">🟢 Node.js</div>
+                    <div class="marquee-item marquee-item-1">🐍 Python</div>
+                    <div class="marquee-item marquee-item-1">🗄️ PostgreSQL</div>
+                    <div class="marquee-item marquee-item-1">📱 Responsive Design</div>
+                    <div class="marquee-item marquee-item-1">🔄 Zapier & Make</div>
+                    <div class="marquee-item marquee-item-1">📧 EmailJS</div>
+                    <div class="marquee-item marquee-item-1">☁️ AWS & Vercel</div>
+                </div>
+            </div>
+
+            <div class="marquee-divider"></div>
+
+            <!-- ROW 2 -->
+            <div class="marquee-row marquee-row-2">
+                <div class="marquee-content">
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> Lead Generation Systems</div>
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> AI Workflow Automation</div>
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> 3D Web Experiences</div>
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> Custom Software</div>
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> Recruitment Platforms</div>
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> SEO & Content Strategy</div>
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> Landing Page Design</div>
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> WhatsApp Automation</div>
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> Client Portal Development</div>
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> Brand Identity</div>
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> Conversion Optimisation</div>
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> API Integrations</div>
+                </div>
+                <!-- Duplicate for seamless scroll -->
+                <div class="marquee-content">
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> Lead Generation Systems</div>
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> AI Workflow Automation</div>
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> 3D Web Experiences</div>
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> Custom Software</div>
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> Recruitment Platforms</div>
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> SEO & Content Strategy</div>
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> Landing Page Design</div>
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> WhatsApp Automation</div>
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> Client Portal Development</div>
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> Brand Identity</div>
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> Conversion Optimisation</div>
+                    <div class="marquee-item marquee-item-2"><span class="star">✦</span> API Integrations</div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -2957,7 +3384,7 @@
                         </div>
                         <div class="contact-item-text">
                             <span class="contact-item-label">Email</span>
-                            <span class="contact-item-value"><a href="mailto:founder@sajilomatics.com">founder@sajilomatics.com</a></span>
+                            <span class="contact-item-value"><a href="mailto:founder@sajilomatics.com">Send an Email</a></span>
                         </div>
                     </div>
 
@@ -2968,7 +3395,7 @@
                         </div>
                         <div class="contact-item-text">
                             <span class="contact-item-label">WhatsApp</span>
-                            <span class="contact-item-value"><a href="https://wa.me/9779705062157" target="_blank">+977 9705062157</a></span>
+                            <span class="contact-item-value"><a href="https://wa.me/9779705062157" target="_blank">Chat on WhatsApp</a></span>
                         </div>
                     </div>
 
@@ -2979,7 +3406,7 @@
                         </div>
                         <div class="contact-item-text">
                             <span class="contact-item-label">LinkedIn</span>
-                            <span class="contact-item-value"><a href="https://linkedin.com/in/aayush-baral-2ba6a82ba" target="_blank">linkedin.com/in/aayush-baral-2ba6a82ba</a></span>
+                            <span class="contact-item-value"><a href="https://linkedin.com/in/aayush-baral-2ba6a82ba" target="_blank">Connect on LinkedIn</a></span>
                         </div>
                     </div>
                 </div>
@@ -3027,6 +3454,62 @@
 
                 <div id="form-success" class="form-success-msg">
                     ✦ Message sent! I'll get back to you within 24 hours.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Built By Section -->
+    <section id="built-by" class="builtby">
+        <div class="builtby-bg-circle"></div>
+        <div class="builtby-bg-square"></div>
+
+        <div class="container builtby-container">
+            <div class="builtby-badge builtby-fade" style="transition-delay: 0s;">
+                ✦ This site was designed & built by Aayush Baral
+            </div>
+
+            <h2 class="builtby-headline builtby-fade" style="transition-delay: 0.1s;">
+                Want a website that<br>
+                <em>works this hard</em> for you?
+            </h2>
+
+            <p class="builtby-subtext builtby-fade" style="transition-delay: 0.2s;">
+                I build premium, conversion-focused websites for business owners who want to stand out, get found, and turn visitors into clients. Just like this one.
+            </p>
+
+            <div class="builtby-pills builtby-fade" style="transition-delay: 0.3s;">
+                <div class="builtby-pill"><span class="star">✦</span> Custom Design — no templates</div>
+                <div class="builtby-pill"><span class="star">✦</span> Mobile-first & fast</div>
+                <div class="builtby-pill"><span class="star">✦</span> Built to convert visitors</div>
+                <div class="builtby-pill"><span class="star">✦</span> Animations & interactions</div>
+                <div class="builtby-pill"><span class="star">✦</span> SEO ready from day one</div>
+                <div class="builtby-pill"><span class="star">✦</span> Delivered in 2–3 weeks</div>
+            </div>
+
+            <div class="builtby-actions builtby-fade" style="transition-delay: 0.4s;">
+                <a href="https://wa.me/9779705062157?text=Hi%20Aayush!%20I%20want%20a%20website%20like%20your%20portfolio." target="_blank" class="btn btn-primary builtby-btn">Get a Website Like This &rarr;</a>
+                <a href="#contact" class="btn btn-secondary builtby-btn">See Pricing</a>
+            </div>
+
+            <div class="builtby-social-proof builtby-fade" style="transition-delay: 0.5s;">
+                <div class="builtby-avatars-group">
+                    <div class="builtby-avatars">
+                        <div class="builtby-avatar avatar-1">FA</div>
+                        <div class="builtby-avatar avatar-2">RS</div>
+                        <div class="builtby-avatar avatar-3">EP</div>
+                    </div>
+                    <div class="builtby-proof-text">
+                        <strong>50+ business owners</strong><br>
+                        trust Aayush with their digital presence
+                    </div>
+                </div>
+                
+                <div class="builtby-divider"></div>
+
+                <div class="builtby-rating-group">
+                    <div class="builtby-stars">★★★★★</div>
+                    <div class="builtby-rating-text"><strong>5.0 average rating</strong></div>
                 </div>
             </div>
         </div>
@@ -3451,9 +3934,33 @@
             if(contactForm) {
                 contactForm.addEventListener('submit', (e) => {
                     e.preventDefault();
-                    contactForm.style.display = 'none';
-                    formTitle.style.display = 'none';
-                    formSuccess.style.display = 'block';
+                    
+                    const submitBtn = contactForm.querySelector('.custom-submit');
+                    const originalBtnText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = 'Sending...';
+                    submitBtn.style.opacity = '0.7';
+                    submitBtn.style.pointerEvents = 'none';
+
+                    const templateParams = {
+                        name: document.getElementById('name').value,
+                        email: document.getElementById('email').value,
+                        service: document.getElementById('service').value,
+                        message: document.getElementById('message').value
+                    };
+
+                    emailjs.send('service_f83v5ag', 'template_kvfzil', templateParams)
+                        .then(() => {
+                            contactForm.style.display = 'none';
+                            formTitle.style.display = 'none';
+                            formSuccess.style.display = 'block';
+                        })
+                        .catch((error) => {
+                            console.error('EmailJS Error:', error);
+                            alert('Oops! Something went wrong while sending the message. Please try again or use WhatsApp.');
+                            submitBtn.innerHTML = originalBtnText;
+                            submitBtn.style.opacity = '1';
+                            submitBtn.style.pointerEvents = 'auto';
+                        });
                 });
             }
 
@@ -3468,7 +3975,7 @@
             });
 
             // Scroll-triggered animations (Intersection Observer)
-            const fadeElements = document.querySelectorAll('.fade-up, .results-fade, .about-fade-left, .about-fade-right, .testi-fade, .contact-fade-left, .contact-fade-right');
+            const fadeElements = document.querySelectorAll('.fade-up, .results-fade, .about-fade-left, .about-fade-right, .testi-fade, .contact-fade-left, .contact-fade-right, .builtby-fade');
             const fadeObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -3640,5 +4147,13 @@
             <span id="wa-notification-dot"></span>
         </button>
     </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init({
+              publicKey: "73PBfjTI_iqodN5vM",
+            });
+        })();
+    </script>
 </body>
 </html>
