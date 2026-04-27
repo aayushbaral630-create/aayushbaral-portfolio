@@ -55,6 +55,14 @@ export default async function handler(req, res) {
   const safeService = sanitizeHTML(service);
   const safeMessage = sanitizeHTML(message);
 
+  // Diagnostic Check: Ensure Environment Variables exist on Vercel
+  if (!process.env.SMTP_HOST) {
+    return res.status(500).json({ 
+      message: "Vercel Environment Variables are NOT loaded.", 
+      error: "process.env.SMTP_HOST is empty. You must add the variables in Vercel Settings and Redeploy." 
+    });
+  }
+
   // Create transporter using SMTP credentials from Environment Variables
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
