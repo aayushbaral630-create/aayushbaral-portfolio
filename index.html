@@ -3469,12 +3469,17 @@
                     
                     <div class="custom-form-group">
                         <label for="name">Your Name</label>
-                        <input type="text" id="name" class="custom-input" placeholder="John Smith" required>
+                        <input type="text" id="name" class="custom-input" required>
                     </div>
                     
                     <div class="custom-form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" class="custom-input" placeholder="john@example.com" required>
+                        <input type="email" id="email" class="custom-input" required>
+                    </div>
+
+                    <div class="custom-form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="custom-input" required>
                     </div>
                     
                     <div class="custom-form-group">
@@ -3491,7 +3496,7 @@
                     
                     <div class="custom-form-group">
                         <label for="message">Your Message</label>
-                        <textarea id="message" class="custom-input" placeholder="Tell me about your business and what you need..." rows="4" required></textarea>
+                        <textarea id="message" class="custom-input" rows="4" required></textarea>
                     </div>
                     
                     <button type="submit" class="custom-submit">Send Message &rarr;</button>
@@ -3988,10 +3993,12 @@
 
                     const nameInput = document.getElementById('name').value;
                     const emailInput = document.getElementById('email').value;
+                    const phoneInput = document.getElementById('phone').value;
                     
                     const payload = {
                         name: nameInput,
                         email: emailInput,
+                        phone: phoneInput,
                         service: document.getElementById('service').value,
                         message: document.getElementById('message').value,
                         _honey: document.getElementById('_honey').value

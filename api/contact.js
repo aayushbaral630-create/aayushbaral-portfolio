@@ -35,7 +35,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Method Not Allowed' });
   }
 
-  const { name, email, service, message, _honey } = req.body;
+  const { name, email, phone, service, message, _honey } = req.body;
 
   // 2. Honeypot Validation (Bot Prevention)
   if (_honey) {
@@ -52,6 +52,7 @@ export default async function handler(req, res) {
   // 3. Input Sanitization
   const safeName = sanitizeHTML(name);
   const safeEmail = sanitizeHTML(email);
+  const safePhone = sanitizeHTML(phone);
   const safeService = sanitizeHTML(service);
   const safeMessage = sanitizeHTML(message);
 
@@ -84,13 +85,14 @@ export default async function handler(req, res) {
       replyTo: safeEmail,
       to: process.env.SMTP_TO || process.env.SMTP_USER, // recipient (you)
       subject: `New Portfolio Enquiry: ${safeService}`, // Subject line
-      text: `Name: ${safeName}\nEmail: ${safeEmail}\nService: ${safeService}\nMessage: ${safeMessage}`, // plain text body
+      text: `Name: ${safeName}\nEmail: ${safeEmail}\nPhone: ${safePhone}\nService: ${safeService}\nMessage: ${safeMessage}`, // plain text body
       html: `
         <div style="font-family: sans-serif; padding: 20px; color: #333;">
           <h2 style="color: #1B2B5E;">New Enquiry from Portfolio Website</h2>
           <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
           <p><strong>Name:</strong> ${safeName}</p>
           <p><strong>Email:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
+          <p><strong>Phone:</strong> <a href="tel:${safePhone}">${safePhone}</a></p>
           <p><strong>Service Requested:</strong> ${safeService}</p>
           <div style="margin-top: 20px; padding: 15px; background: #f9f9f9; border-left: 4px solid #C9A84C;">
             <p style="margin: 0;"><strong>Message:</strong></p>
