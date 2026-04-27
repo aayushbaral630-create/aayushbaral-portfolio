@@ -639,8 +639,9 @@
             .floating-badge {
                 position: absolute;
                 bottom: 12%;
-                right: -5%;
+                right: 10%; /* Inset to prevent viewport clipping */
                 margin-top: 0;
+                z-index: 10;
             }
         }
 
