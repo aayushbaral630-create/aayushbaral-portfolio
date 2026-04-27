@@ -3977,7 +3977,7 @@
                     .then(async (response) => {
                         if (!response.ok) {
                             const errorData = await response.json().catch(() => ({}));
-                            throw new Error(errorData.message || 'Server returned an error');
+                            throw new Error(errorData.message + (errorData.error ? ' Details: ' + errorData.error : ''));
                         }
                         return response.json();
                     })
@@ -3988,7 +3988,7 @@
                     })
                     .catch((error) => {
                         console.error('Submission Error:', error);
-                        alert('Oops! Something went wrong while sending the message. Please check your SMTP environment variables in Vercel. Error: ' + error.message);
+                        alert('Oops! ' + error.message);
                         submitBtn.innerHTML = originalBtnText;
                         submitBtn.style.opacity = '1';
                         submitBtn.style.pointerEvents = 'auto';
