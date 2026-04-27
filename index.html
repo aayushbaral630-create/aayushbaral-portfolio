@@ -3431,6 +3431,12 @@
                 <div class="form-title" id="form-title">Send a Message</div>
                 
                 <form id="portfolio-form" class="custom-form">
+                    <!-- Security Honeypot Field (Hidden from humans, filled by bots) -->
+                    <div style="display:none; position:absolute; left:-9999px;">
+                        <label for="_honey">Please leave this field blank</label>
+                        <input type="text" id="_honey" name="_honey" tabindex="-1" autocomplete="off">
+                    </div>
+                    
                     <div class="custom-form-group">
                         <label for="name">Your Name</label>
                         <input type="text" id="name" class="custom-input" placeholder="John Smith" required>
@@ -3957,7 +3963,8 @@
                         name: nameInput,
                         email: emailInput,
                         service: document.getElementById('service').value,
-                        message: document.getElementById('message').value
+                        message: document.getElementById('message').value,
+                        _honey: document.getElementById('_honey').value
                     };
 
                     fetch('/api/contact', {
