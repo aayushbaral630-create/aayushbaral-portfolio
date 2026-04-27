@@ -3952,32 +3952,40 @@
 
                     const nameInput = document.getElementById('name').value;
                     const emailInput = document.getElementById('email').value;
-                    const templateParams = {
+                    
+                    const payload = {
                         name: nameInput,
-                        Name: nameInput,
-                        user_name: nameInput,
-                        from_name: nameInput,
                         email: emailInput,
-                        Email: emailInput,
-                        user_email: emailInput,
-                        reply_to: emailInput,
                         service: document.getElementById('service').value,
                         message: document.getElementById('message').value
                     };
 
-                    emailjs.send('service_f83v5ag', 'template_kvfzril', templateParams, '73PBfjTI_iqodN5vM')
-                        .then(() => {
-                            contactForm.style.display = 'none';
-                            formTitle.style.display = 'none';
-                            formSuccess.style.display = 'block';
-                        })
-                        .catch((error) => {
-                            console.error('EmailJS Error Details:', error);
-                            alert('Oops! EmailJS rejected the request. Please check your Service ID, Template ID, or Domain restrictions. Error: ' + (error.text || error.message || 'Unknown'));
-                            submitBtn.innerHTML = originalBtnText;
-                            submitBtn.style.opacity = '1';
-                            submitBtn.style.pointerEvents = 'auto';
-                        });
+                    fetch('/api/contact', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    })
+                    .then(async (response) => {
+                        if (!response.ok) {
+                            const errorData = await response.json().catch(() => ({}));
+                            throw new Error(errorData.message || 'Server returned an error');
+                        }
+                        return response.json();
+                    })
+                    .then(() => {
+                        contactForm.style.display = 'none';
+                        formTitle.style.display = 'none';
+                        formSuccess.style.display = 'block';
+                    })
+                    .catch((error) => {
+                        console.error('Submission Error:', error);
+                        alert('Oops! Something went wrong while sending the message. Please check your SMTP environment variables in Vercel. Error: ' + error.message);
+                        submitBtn.innerHTML = originalBtnText;
+                        submitBtn.style.opacity = '1';
+                        submitBtn.style.pointerEvents = 'auto';
+                    });
                 });
             }
 
@@ -4165,14 +4173,5 @@
             </svg>
             <span id="wa-notification-dot"></span>
         </button>
-    </div>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function() {
-            emailjs.init({
-              publicKey: "73PBfjTI_iqodN5vM",
-            });
-        })();
-    </script>
 </body>
 </html>

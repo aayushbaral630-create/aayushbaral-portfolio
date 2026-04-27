@@ -1,0 +1,12 @@
+{
+  "name": "aayushbaral-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio website",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.13"
+  }
+}
