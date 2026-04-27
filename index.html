@@ -458,6 +458,22 @@
             color: var(--color-accent);
         }
 
+        .typewriter-wrapper {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 2px;
+            min-height: 95px; /* Reserves space for 2 lines on mobile to prevent layout shift */
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 768px) {
+            .typewriter-wrapper {
+                min-height: auto;
+                flex-wrap: nowrap;
+                white-space: nowrap;
+            }
+        }
+
         @media (min-width: 768px) {
             .hero .display {
                 font-size: clamp(48px, 6vw, 72px);
@@ -2832,7 +2848,7 @@
                   <span class="display" style="color: var(--color-primary); display: block;">
                     I Build
                   </span>
-                  <span style="display: inline-flex; align-items: baseline; gap: 2px;">
+                  <span class="typewriter-wrapper">
                     <span 
                       id="typewriter-text" 
                       class="display" 
