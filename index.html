@@ -462,8 +462,14 @@
             display: inline-flex;
             align-items: baseline;
             gap: 2px;
-            min-height: 95px; /* Reserves space for 2 lines on mobile to prevent layout shift */
+            min-height: 145px; /* Reserves space for up to 3 lines on very small mobile screens */
             flex-wrap: wrap;
+        }
+
+        @media (min-width: 480px) {
+            .typewriter-wrapper {
+                min-height: 95px; /* 2 lines on larger phones */
+            }
         }
 
         @media (min-width: 768px) {
