@@ -3829,15 +3829,32 @@
                         _honey: document.getElementById('_honey').value
                     };
 
-                    // Temporarily simulate a successful form submission for the UI
-                    // Ready for the next integration approach
-                    console.log('Form payload ready for next integration:', payload);
-                    
-                    setTimeout(() => {
+                    fetch('/api/contact', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    })
+                    .then(async (response) => {
+                        if (!response.ok) {
+                            const errorData = await response.json().catch(() => ({}));
+                            throw new Error(errorData.message + (errorData.error ? ' Details: ' + errorData.error : ''));
+                        }
+                        return response.json();
+                    })
+                    .then(() => {
                         contactForm.style.display = 'none';
                         formTitle.style.display = 'none';
                         formSuccess.style.display = 'block';
-                    }, 800);
+                    })
+                    .catch((error) => {
+                        console.error('Submission Error:', error);
+                        alert('Oops! Something went wrong: ' + error.message);
+                        submitBtn.innerHTML = originalBtnText;
+                        submitBtn.style.opacity = '1';
+                        submitBtn.style.pointerEvents = 'auto';
+                    });
                 });
             }
 
